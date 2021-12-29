@@ -48,8 +48,6 @@ long Inv_Mod(long a, long m) {
 ////////////////////////////////
 //左バイナリ法でべき乗剰余計算を行う
 long Power_Mod(long base, long expo, long mod) {
-  char input;
-  long  //2進数表現1000100
   int i = 0;
   long n = 1;
   long final_ans;
@@ -57,12 +55,9 @@ long Power_Mod(long base, long expo, long mod) {
   long N ;
   long b ;
   long e ;
-  while (Serial.available()) {
-    input = (char)Serial.read();
     N = mod;
     e = expo;
     b = base;
-    if (input == '1') {
       while (X > 0) {
         ans = ans * ans;   // 2乗算する
         ans = ans % N;    // その都度、modを取ることを忘れずに
@@ -84,8 +79,6 @@ long Power_Mod(long base, long expo, long mod) {
          }
          Serial.print("final_ans");
          Serial.println(final_ans);*/
-    }
-  }
   return ans;
 }
 /////////////////////////////////
@@ -126,7 +119,7 @@ void serialEvent() {
         //eulerと互いに素なeを求める
         while (1) {
           e = random();
-          if (e > euler) break;
+          e = e % euler;
           gcd_return = gcd(e, euler);
 
           if (gcd_return == 1) break;
